@@ -1,0 +1,22 @@
+<h1>{{ postcode }} is in {{ constituency }}</h1>
+
+<form name="input" action="." method="post">
+<h2>How did you vote?</h2>
+<select name="fptp">
+{% for option in constituency.option_set.all %}
+<option value="{{ option.name }}">{{ option.name }} ({{ option.party.name }})</option>
+{% endfor %}
+</select>
+<h2>How would you have AV voted?</h2>
+{% for option in constituency.option_set.all %}
+<select name="{{ option.name }}" value="">
+<option value="">-----</option>
+{% for option in constituency.option_set.all %}
+<option value="{{forloop.counter}}">{{ forloop.counter }}</option>
+{% endfor %}
+</select>{{ option.name }} ({{ option.party.name }})
+<br>
+{% endfor %}
+{% csrf_token %}
+<input type="submit" value="Submit" />
+</form>

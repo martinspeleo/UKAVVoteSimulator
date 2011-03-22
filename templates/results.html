@@ -1,0 +1,17 @@
+<ul>
+{% for contest, result in results.items %}
+    <li>{{contest}} - {{result.winner.name}} ({{result.winner.party}})
+    <ul>
+    {% for round in result.rounds %} 
+        <li>
+        <ul>  
+        {% for option, votes in round %} 
+            <li>{{ votes }} - {{ option.name }} ({{ option.party }})</li>
+        {% endfor %}
+        </ul>
+        </li>
+    {% endfor %}
+    </ul>
+    </li>
+{% endfor %}
+</ul>

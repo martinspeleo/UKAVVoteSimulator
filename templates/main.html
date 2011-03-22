@@ -1,0 +1,6 @@
+{{ errormessage }}
+<form name="input" action="." method="get">
+Postcode: <input type="text" name="postcode" value="{{value}}">
+<input type="submit" value="Submit" />
+</form> 
+<a href="{% url avsimulation.views.run_election %}">Simulate FPTP election</a>
